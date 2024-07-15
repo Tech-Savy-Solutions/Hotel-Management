@@ -32,7 +32,7 @@ export const addUser = (req, res) => {
     User.create(req.body)
         .then((User) => res.json({ msg: 'User added successfully' }))
         .catch((err) =>
-            res.status(400).json({ error: 'Unable to add this User' })
+            res.status(400).json({ error: 'Unable to add this User', err })
         );
 };
 

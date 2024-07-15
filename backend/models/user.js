@@ -15,6 +15,16 @@ const UserSchema = new Schema(
         Password: { type: String, required: true },
         Email: { type: String, required: true, unique: true },
         PhoneNumber: { type: String, required: true, unique: true },
+        createdBy: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        updatedBy: {
+            type: String,
+            required: true,
+            unique: true,
+        },
     },
     { timestamps: true }
 );

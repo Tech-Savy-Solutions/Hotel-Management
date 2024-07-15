@@ -3,9 +3,9 @@ import connectDB from './config/db.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import books from './routes/api/books.js';
-import users from './routes/api/users.js';
-
+import books from './routes/books.js';
+import users from './routes/users.js';
+import roles from './routes/roles.js';
 // Load environment variables from .env file
 dotenv.config();
 
@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // use the routes module as a middleware
 // for the /api/books path
 app.use('/api/user/v1', users);
+app.use('/api/role/v1', roles);
 
 app.get('/', (req, res) => res.send('Hello world!'));
 

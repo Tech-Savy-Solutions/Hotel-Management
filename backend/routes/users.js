@@ -8,7 +8,7 @@ import {
     addUser,
     updateUser,
     deleteUser,
-} from '../../controllers/UserController.js';
+} from '../controllers/UserController.js';
 
 // @route   GET api/Users/test
 // @desc    Tests Users route
