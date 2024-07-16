@@ -8,7 +8,7 @@ import {
     addRole,
     updateRole,
     deleteRole,
-} from '../controllers/roleController.js';
+} from '../controllers/role.controller.js';
 
 // @route   GET api/Roles/test
 // @desc    Tests Roles route

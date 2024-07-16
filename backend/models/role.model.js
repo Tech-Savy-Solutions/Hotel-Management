@@ -6,11 +6,6 @@ const Schema = mongoose.Schema;
 
 const RoleSchema = new Schema(
     {
-        RoleID: {
-            type: String,
-            required: true,
-            unique: true,
-        },
         RoleName: { type: String, required: true },
         createdBy: {
             type: String,

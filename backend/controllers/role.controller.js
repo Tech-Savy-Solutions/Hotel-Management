@@ -1,4 +1,4 @@
-import role from '../models/role.js';
+import role from '../models/role.model.js';
 
 // @desc    Tests roles route
 // @route   GET api/roles/test
