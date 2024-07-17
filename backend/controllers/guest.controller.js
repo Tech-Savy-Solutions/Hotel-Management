@@ -22,7 +22,9 @@ export const getAllGuests = (req, res) => {
 export const getGuestById = (req, res) => {
     Guest.findById(req.params.id)
         .then((Guest) => res.json(Guest))
-        .catch((err) => res.status(404).json({ noGuestsfound: 'No Guest found' }));
+        .catch((err) =>
+            res.status(404).json({ noGuestsfound: 'No Guest found' })
+        );
 };
 
 // @desc    Add/save Guest
@@ -32,10 +34,10 @@ export const addGuest = (req, res) => {
     Guest.create(req.body)
         .then((Guest) => res.json({ msg: 'Guest added successfully' }))
         .catch((err) => {
-            console.log("err", err)
-            res.status(400).json({ error: 'Unable to add this Guest', err })
-        }
-        );
+            console.log('err', err);
+
+            res.status(400).json({ error: 'Unable to add this Guest', err });
+        });
 };
 
 // @desc    Update Guest by id

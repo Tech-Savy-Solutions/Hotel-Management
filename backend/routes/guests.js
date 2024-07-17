@@ -1,4 +1,7 @@
+// guestRoutes.js
+
 import express from 'express';
+
 const router = express.Router();
 
 import {
@@ -8,36 +11,41 @@ import {
     addGuest,
     updateGuest,
     deleteGuest,
-} from '../controllers/guest.controller.js';
+} from '../controllers/guest.controller.js'; // Adjust path as per your project structure
 
-// @route   GET api/Guests/test
-// @desc    Tests Guests route
-// @access  Public
-router.get('/test', testRoute);
+import { ROUTE_PATHS } from '../constants/app.constants.js'; // Import route paths constant
 
-// @route   GET api/Guests
+// Destructure route paths
+const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
+
+// @route   GET ${GET_ALL}
 // @desc    Get all Guests
 // @access  Public
-router.get('/', getAllGuests);
+router.get(GET_ALL, getAllGuests);
 
-// @route   GET api/Guests/:id
+// @route   GET ${GET_BY_ID}
 // @desc    Get single Guest by id
 // @access  Public
-router.get('/:id', getGuestById);
+router.get(GET_BY_ID, getGuestById);
 
-// @route   POST api/Guests
+// @route   POST ${ADD}
 // @desc    Add/save Guest
 // @access  Public
-router.post('/', addGuest);
+router.post(ADD, addGuest);
 
-// @route   PUT api/Guests/:id
+// @route   PUT ${UPDATE}
 // @desc    Update Guest by id
 // @access  Public
-router.put('/:id', updateGuest);
+router.put(UPDATE, updateGuest);
 
-// @route   DELETE api/Guests/:id
+// @route   DELETE ${DELETE}
 // @desc    Delete Guest by id
 // @access  Public
-router.delete('/:id', deleteGuest);
+router.delete(DELETE, deleteGuest);
+
+// @route   GET ${TEST}
+// @desc    Tests Guests route
+// @access  Public
+router.get(TEST, testRoute);
 
 export default router;

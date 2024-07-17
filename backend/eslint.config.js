@@ -1,4 +1,5 @@
 import globals from 'globals';
+
 import pluginJs from '@eslint/js';
 
 export default [
@@ -9,6 +10,10 @@ export default [
         rules: {
             semi: 'error',
             'no-unused-vars': 'error',
+            'padding-line-between-statements': [
+                'error',
+                { blankLine: 'always', prev: '*', next: '*' },
+            ],
         },
     },
 ];

@@ -1,4 +1,5 @@
 import express from 'express';
+
 const router = express.Router();
 
 import {
@@ -10,34 +11,38 @@ import {
     deleteUser,
 } from '../controllers/user.controller.js';
 
+import { ROUTE_PATHS } from '../constants/app.constants.js';
+
+const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
 // @route   GET api/Users/test
 // @desc    Tests Users route
 // @access  Public
-router.get('/test', testRoute);
+
+router.get(TEST, testRoute);
 
 // @route   GET api/Users
 // @desc    Get all Users
 // @access  Public
-router.get('/', getAllUsers);
+router.get(GET_ALL, getAllUsers);
 
 // @route   GET api/Users/:id
 // @desc    Get single User by id
 // @access  Public
-router.get('/:id', getUserById);
+router.get(GET_BY_ID, getUserById);
 
 // @route   POST api/Users
 // @desc    Add/save User
 // @access  Public
-router.post('/', addUser);
+router.post(ADD, addUser);
 
 // @route   PUT api/Users/:id
 // @desc    Update User by id
 // @access  Public
-router.put('/:id', updateUser);
+router.put(UPDATE, updateUser);
 
 // @route   DELETE api/Users/:id
 // @desc    Delete User by id
 // @access  Public
-router.delete('/:id', deleteUser);
+router.delete(DELETE, deleteUser);
 
 export default router;

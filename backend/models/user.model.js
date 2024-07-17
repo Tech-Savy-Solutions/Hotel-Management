@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+
 import bcrypt from 'bcrypt';
-import { DB_CONSTANTS } from '../constants/dbConstants.js';
+
+import { DB_CONSTANTS } from '../constants/db.constants.js';
 
 const Schema = mongoose.Schema;
 
@@ -11,12 +13,12 @@ const UserSchema = new Schema(
         Email: { type: String, required: true, unique: true },
         PhoneNumber: { type: String, required: true, unique: true },
         createdBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             unique: true,
         },
         updatedBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             unique: true,
         },
@@ -32,8 +34,11 @@ UserSchema.pre('save', async function (next) {
 
     try {
         const salt = await bcrypt.genSalt(10);
+
         const hash = await bcrypt.hash(user.password, salt);
+
         user.password = hash;
+
         next();
     } catch (err) {
         next(err);
@@ -45,6 +50,8 @@ UserSchema.methods.comparePassword = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };
 
-export default mongoose.model('User', UserSchema, DB_CONSTANTS.COLLECTIONS.USERS);
-
-
+export default mongoose.model(
+    'User',
+    UserSchema,
+    DB_CONSTANTS.COLLECTIONS.USERS
+);

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import { DB_CONSTANTS } from '../constants/dbConstants.js';
+
+import { DB_CONSTANTS } from '../constants/db.constants.js';
 
 const Schema = mongoose.Schema;
 
@@ -11,12 +12,12 @@ const GuestSchema = new Schema(
         Email: { type: String, required: true, unique: true },
         PhoneNumber: { type: String, required: true, unique: true },
         createdBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             unique: true,
         },
         updatedBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             unique: true,
         },
@@ -24,6 +25,8 @@ const GuestSchema = new Schema(
     { timestamps: true }
 );
 
-export default mongoose.model('Guest', GuestSchema, DB_CONSTANTS.COLLECTIONS.GUESTS);
-
-
+export default mongoose.model(
+    'Guest',
+    GuestSchema,
+    DB_CONSTANTS.COLLECTIONS.GUESTS
+);

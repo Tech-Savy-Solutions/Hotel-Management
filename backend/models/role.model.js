@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+
 import bcrypt from 'bcrypt';
-import { DB_CONSTANTS } from '../constants/dbConstants.js';
+
+import { DB_CONSTANTS } from '../constants/db.constants.js';
 
 const Schema = mongoose.Schema;
 
@@ -8,24 +10,23 @@ const RoleSchema = new Schema(
     {
         RoleName: { type: String, required: true },
         createdBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             unique: true,
-            ref: DB_CONSTANTS.COLLECTIONS.USERS
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
         },
         updatedBy: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
             unique: true,
-            ref: DB_CONSTANTS.COLLECTIONS.USERS
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
         },
     },
     { timestamps: true }
 );
 
-
-
-
-export default mongoose.model('Role', RoleSchema, DB_CONSTANTS.COLLECTIONS.ROLES);
-
-
+export default mongoose.model(
+    'Role',
+    RoleSchema,
+    DB_CONSTANTS.COLLECTIONS.ROLES
+);
