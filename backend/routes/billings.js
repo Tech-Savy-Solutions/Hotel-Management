@@ -13,7 +13,7 @@ import {
 
 import { ROUTE_PATHS } from '../constants/app.constants.js';
 
-const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS.BILLINGS;
+const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
 
 // @route   GET api/billings/test
 // @desc    Tests Billing route
