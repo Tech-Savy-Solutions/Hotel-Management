@@ -1,14 +1,14 @@
-import Book from '../models/book.js';
+import Book from '../models/book';
 
 // @desc    Tests books route
 // @route   GET api/books/test
 // @access  Public
-export const testRoute = (req, res) => res.send('book route testing!');
+export const testRoute = (req:any, res:any) => res.send('book route testing!');
 
 // @desc    Get all books
 // @route   GET api/books
 // @access  Public
-export const getAllBooks = (req, res) => {
+export const getAllBooks = (req:any, res:any) => {
     Book.find()
         .then((books) => res.json(books))
         .catch((err) =>
@@ -19,7 +19,7 @@ export const getAllBooks = (req, res) => {
 // @desc    Get single book by id
 // @route   GET api/books/:id
 // @access  Public
-export const getBookById = (req, res) => {
+export const getBookById = (req:any, res:any) => {
     Book.findById(req.params.id)
         .then((book) => res.json(book))
         .catch((err) => res.status(404).json({ nobookfound: 'No Book found' }));
@@ -28,7 +28,7 @@ export const getBookById = (req, res) => {
 // @desc    Add/save book
 // @route   POST api/books
 // @access  Public
-export const addBook = (req, res) => {
+export const addBook = (req:any, res:any) => {
     Book.create(req.body)
         .then((book) => res.json({ msg: 'Book added successfully' }))
         .catch((err) =>
@@ -39,7 +39,7 @@ export const addBook = (req, res) => {
 // @desc    Update book by id
 // @route   PUT api/books/:id
 // @access  Public
-export const updateBook = (req, res) => {
+export const updateBook = (req:any, res:any) => {
     Book.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((book) => res.json({ msg: 'Updated successfully' }))
         .catch((err) =>
@@ -50,7 +50,7 @@ export const updateBook = (req, res) => {
 // @desc    Delete book by id
 // @route   DELETE api/books/:id
 // @access  Public
-export const deleteBook = (req, res) => {
+export const deleteBook = (req:any, res:any) => {
     Book.findByIdAndDelete(req.params.id)
         .then((book) => res.json({ msg: 'Book entry deleted successfully' }))
         .catch((err) => res.status(404).json({ error: 'No such a book' }));

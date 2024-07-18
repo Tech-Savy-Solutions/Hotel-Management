@@ -8,7 +8,7 @@ export const RESERVATION_STATUS = [
 
 export const DEFAULT_RESERVATION_STATUS = 'Pending';
 
-export const BASE_PATH = '/api/v1'
+export const BASE_PATH = '/api/v1';
 
 export const END_POINTS = {
     USERS: 'users',
@@ -17,7 +17,7 @@ export const END_POINTS = {
     RESERVATIONS: 'reservations',
     ROOMS: 'rooms',
     BILLINGS: 'billings',
-}
+};
 
 export const ROUTE_PATHS = {
     TEST: '/test',

@@ -1,17 +1,18 @@
 // Import necessary modules
-import Reservation from '../models/reservation.model.js'; // Assuming Reservation model is defined
+import { AnyBulkWriteOperation } from 'mongodb';
+import Reservation from '../models/reservation.model'; // Assuming Reservation model is defined
 
 // @desc    Tests Reservation route
 // @route   GET api/reservations/test
 // @access  Public
-export const testRoute = (req, res) => {
+export const testRoute = (req:any, res:any) => {
     res.send('Reservation route testing!');
 };
 
 // @desc    Get all Reservations
 // @route   GET api/reservations
 // @access  Public
-export const getAllReservations = (req, res) => {
+export const getAllReservations = (req:any, res:any) => {
     Reservation.find()
         .then((reservations) => res.json(reservations))
         .catch((err) =>
@@ -24,7 +25,7 @@ export const getAllReservations = (req, res) => {
 // @desc    Get single Reservation by id
 // @route   GET api/reservations/:id
 // @access  Public
-export const getReservationById = (req, res) => {
+export const getReservationById = (req:any, res:any) => {
     Reservation.findById(req.params.id)
         .then((reservation) => {
             if (!reservation) {
@@ -43,7 +44,7 @@ export const getReservationById = (req, res) => {
 // @desc    Add/save Reservation
 // @route   POST api/reservations
 // @access  Public
-export const addReservation = (req, res) => {
+export const addReservation = (req:any, res:any) => {
     Reservation.create(req.body)
         .then((reservation) =>
             res.json({ msg: 'Reservation added successfully', reservation })
@@ -58,7 +59,7 @@ export const addReservation = (req, res) => {
 // @desc    Update Reservation by id
 // @route   PUT api/reservations/:id
 // @access  Public
-export const updateReservation = (req, res) => {
+export const updateReservation = (req:any, res:any) => {
     Reservation.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((reservation) => {
             if (!reservation) {
@@ -77,7 +78,7 @@ export const updateReservation = (req, res) => {
 // @desc    Delete Reservation by id
 // @route   DELETE api/reservations/:id
 // @access  Public
-export const deleteReservation = (req, res) => {
+export const deleteReservation = (req:any, res:any) => {
     Reservation.findByIdAndDelete(req.params.id)
         .then((reservation) => {
             if (!reservation) {

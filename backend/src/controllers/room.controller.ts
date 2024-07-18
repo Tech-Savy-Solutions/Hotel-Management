@@ -1,17 +1,17 @@
 // Import necessary modules
-import Room from '../models/room.model.js'; // Assuming Room model is defined
+import Room from '../models/room.model'; // Assuming Room model is defined
 
 // @desc    Tests Room route
 // @route   GET api/rooms/test
 // @access  Public
-export const testRoute = (req, res) => {
+export const testRoute = (req:any, res:any) => {
     res.send('Room route testing!');
 };
 
 // @desc    Get all Rooms
 // @route   GET api/rooms
 // @access  Public
-export const getAllRooms = (req, res) => {
+export const getAllRooms = (req:any, res:any) => {
     Room.find()
         .then((rooms) => res.json(rooms))
         .catch((err) =>
@@ -24,7 +24,7 @@ export const getAllRooms = (req, res) => {
 // @desc    Get single Room by id
 // @route   GET api/rooms/:id
 // @access  Public
-export const getRoomById = (req, res) => {
+export const getRoomById = (req:any, res:any) => {
     Room.findById(req.params.id)
         .then((room) => {
             if (!room) {
@@ -43,7 +43,7 @@ export const getRoomById = (req, res) => {
 // @desc    Add/save Room
 // @route   POST api/rooms
 // @access  Public
-export const addRoom = (req, res) => {
+export const addRoom = (req:any, res:any) => {
     Room.create(req.body)
         .then((room) =>
             res.json({ msg: 'Room added successfully', room })
@@ -58,7 +58,7 @@ export const addRoom = (req, res) => {
 // @desc    Update Room by id
 // @route   PUT api/rooms/:id
 // @access  Public
-export const updateRoom = (req, res) => {
+export const updateRoom = (req:any, res:any) => {
     Room.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((room) => {
             if (!room) {
@@ -77,7 +77,7 @@ export const updateRoom = (req, res) => {
 // @desc    Delete Room by id
 // @route   DELETE api/rooms/:id
 // @access  Public
-export const deleteRoom = (req, res) => {
+export const deleteRoom = (req:any, res:any) => {
     Room.findByIdAndDelete(req.params.id)
         .then((room) => {
             if (!room) {

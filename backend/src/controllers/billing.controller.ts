@@ -1,17 +1,17 @@
 // Import necessary modules
-import Billing from '../models/billing.model.js'; // Assuming Billing model is defined
+import Billing from '../models/billing.model'; // Assuming Billing model is defined
 
 // @desc    Tests Billing route
 // @route   GET api/billings/test
 // @access  Public
-export const testRoute = (req, res) => {
+export const testRoute = (req:any, res:any) => {
     res.send('Billing route testing!');
 };
 
 // @desc    Get all Billings
 // @route   GET api/billings
 // @access  Public
-export const getAllBillings = (req, res) => {
+export const getAllBillings = (req:any, res:any) => {
     Billing.find()
         .then((billings) => res.json(billings))
         .catch((err) =>
@@ -22,7 +22,7 @@ export const getAllBillings = (req, res) => {
 // @desc    Get single Billing by id
 // @route   GET api/billings/:id
 // @access  Public
-export const getBillingById = (req, res) => {
+export const getBillingById = (req:any, res:any) => {
     Billing.findById(req.params.id)
         .then((billing) => {
             if (!billing) {
@@ -39,7 +39,7 @@ export const getBillingById = (req, res) => {
 // @desc    Add/save Billing
 // @route   POST api/billings
 // @access  Public
-export const addBilling = (req, res) => {
+export const addBilling = (req:any, res:any) => {
     Billing.create(req.body)
         .then((billing) =>
             res.json({ msg: 'Billing added successfully', billing })
@@ -52,7 +52,7 @@ export const addBilling = (req, res) => {
 // @desc    Update Billing by id
 // @route   PUT api/billings/:id
 // @access  Public
-export const updateBilling = (req, res) => {
+export const updateBilling = (req:any, res:any) => {
     Billing.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((billing) => {
             if (!billing) {
@@ -69,7 +69,7 @@ export const updateBilling = (req, res) => {
 // @desc    Delete Billing by id
 // @route   DELETE api/billings/:id
 // @access  Public
-export const deleteBilling = (req, res) => {
+export const deleteBilling = (req:any, res:any) => {
     Billing.findByIdAndDelete(req.params.id)
         .then((billing) => {
             if (!billing) {

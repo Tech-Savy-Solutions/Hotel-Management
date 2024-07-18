@@ -8,16 +8,16 @@ import cors from 'cors';
 
 import bodyParser from 'body-parser';
 
-import users from './routes/users.js';
+import users from './routes/users';
 
-import roles from './routes/roles.js';
+import roles from './routes/roles';
 
-import guests from './routes/guests.js';
+import guests from './routes/guests';
 
-import rooms from './routes/rooms.js';
+import rooms from './routes/rooms';
 
-import reservations from './routes/reservations.js';
-import { BASE_PATH, END_POINTS } from './constants/app.constants.js';
+import reservations from './routes/reservations';
+import { BASE_PATH, END_POINTS } from './constants/app.constants';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -28,7 +28,6 @@ console.log('process.env.DB_KEY:', process.env.DB_KEY);
 const app = express();
 
 // Connect to the database
-connectDB();
 
 app.use(cors({ origin: true, credentials: true }));
 
@@ -49,4 +48,6 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 const port = process.env.PORT || 8082;
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+connectDB().then(() =>
+    app.listen(port, () => console.log(`Server running on port ${port}`))
+);
