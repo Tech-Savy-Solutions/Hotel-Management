@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 
-import { DB_CONSTANTS } from '../constants/db.constants.js';
+import { DB_CONSTANTS } from '../constants/db.constants';
 
 import {
     RESERVATION_STATUS,
     DEFAULT_RESERVATION_STATUS,
-} from '../constants/app.constants.js';
+} from '../constants/app.constants';
 
 const Schema = mongoose.Schema;
 

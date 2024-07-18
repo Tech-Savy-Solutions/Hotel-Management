@@ -11,9 +11,9 @@ import {
     addGuest,
     updateGuest,
     deleteGuest,
-} from '../controllers/guest.controller.js'; // Adjust path as per your project structure
+} from '../controllers/guest.controller'; // Adjust path as per your project structure
 
-import { ROUTE_PATHS } from '../constants/app.constants.js'; // Import route paths constant
+import { ROUTE_PATHS } from '../constants/app.constants'; // Import route paths constant
 
 // Destructure route paths
 const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;

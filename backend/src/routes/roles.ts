@@ -9,9 +9,9 @@ import {
     addRole,
     updateRole,
     deleteRole,
-} from '../controllers/role.controller.js';
+} from '../controllers/role.controller';
 
-import { ROUTE_PATHS } from '../constants/app.constants.js';
+import { ROUTE_PATHS } from '../constants/app.constants';
 
 const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
 

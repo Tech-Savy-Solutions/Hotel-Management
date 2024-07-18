@@ -9,7 +9,7 @@ import {
     addBook,
     updateBook,
     deleteBook,
-} from '../controllers/bookController.js';
+} from '../controllers/bookController';
 
 // @route   GET api/books/test
 // @desc    Tests books route

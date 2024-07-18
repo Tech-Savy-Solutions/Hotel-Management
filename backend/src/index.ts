@@ -1,6 +1,6 @@
 import express from 'express';
 
-import connectDB from './config/db.js';
+import connectDB from './config/db';
 
 import dotenv from 'dotenv';
 
@@ -23,7 +23,6 @@ import { BASE_PATH, END_POINTS } from './constants/app.constants';
 dotenv.config();
 
 // Debugging line to ensure environment variables are loaded
-console.log('process.env.DB_KEY:', process.env.DB_KEY);
 
 const app = express();
 

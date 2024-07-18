@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 import bcrypt from 'bcrypt';
 
-import { DB_CONSTANTS } from '../constants/db.constants.js';
+import { DB_CONSTANTS } from '../constants/db.constants';
 
 const Schema = mongoose.Schema;
 

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import { DB_CONSTANTS } from '../constants/db.constants.js';
+import { DB_CONSTANTS } from '../constants/db.constants';
 
 const Schema = mongoose.Schema;
 

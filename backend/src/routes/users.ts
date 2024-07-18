@@ -9,9 +9,9 @@ import {
     addUser,
     updateUser,
     deleteUser,
-} from '../controllers/user.controller.js';
+} from '../controllers/user.controller';
 
-import { ROUTE_PATHS } from '../constants/app.constants.js';
+import { ROUTE_PATHS } from '../constants/app.constants';
 
 const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
 // @route   GET api/Users/test

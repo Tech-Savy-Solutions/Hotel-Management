@@ -9,11 +9,11 @@ import {
     addBilling,
     updateBilling,
     deleteBilling,
-} from '../controllers/billing.controller.js'; // Adjust path as per your project structure
+} from '../controllers/billing.controller'; // Adjust path as per your project structure
 
-import { ROUTE_PATHS } from '../constants/app.constants.js';
+import { ROUTE_PATHS } from '../constants/app.constants';
 
-const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS.BILLINGS;
+const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
 
 // @route   GET api/billings/test
 // @desc    Tests Billing route

@@ -8,9 +8,6 @@ dotenv.config()
 
 const db = process.env.MONGODB_URI!
 
-/* Replace <password> with your database password */
-// console.log('DB_KEY', db)
-
 mongoose.set({ strictQuery: true })
 
 const connectDB = async () => {
