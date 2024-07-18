@@ -16,7 +16,10 @@ import guests from './routes/guests';
 
 import rooms from './routes/rooms';
 
+import pos from './routes/pos';
+
 import reservations from './routes/reservations';
+
 import { BASE_PATH, END_POINTS } from './constants/app.constants';
 
 // Load environment variables from .env file
@@ -42,6 +45,7 @@ app.use(`${BASE_PATH}/${END_POINTS.ROLES}`, roles);
 app.use(`${BASE_PATH}/${END_POINTS.GUESTS}`, guests);
 app.use(`${BASE_PATH}/${END_POINTS.RESERVATIONS}`, reservations);
 app.use(`${BASE_PATH}/${END_POINTS.ROOMS}`, rooms);
+app.use(`${BASE_PATH}/${END_POINTS.POS}`, pos);
 
 app.get('/', (req, res) => res.send('Hello world!'));
 
