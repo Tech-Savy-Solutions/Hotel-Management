@@ -46,6 +46,7 @@ app.use(`${BASE_PATH}/${END_POINTS.GUESTS}`, guests);
 app.use(`${BASE_PATH}/${END_POINTS.RESERVATIONS}`, reservations);
 app.use(`${BASE_PATH}/${END_POINTS.ROOMS}`, rooms);
 app.use(`${BASE_PATH}/${END_POINTS.POS}`, pos);
+app.use(`${BASE_PATH}/${END_POINTS.POS}`, pos);
 
 app.get('/', (req, res) => res.send('Hello world!'));
 
