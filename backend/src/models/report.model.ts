@@ -1,14 +1,9 @@
 import mongoose from 'mongoose';
 
-import { DB_CONSTANTS } from '../constants/db.constants';
-
-const Schema = mongoose.Schema;
-
-const ReportsSchema = new Schema(
+const reportSchema = new mongoose.Schema(
     {
         reportName: {
             type: String,
-            ref: DB_CONSTANTS.COLLECTIONS.RESERVATIONS,
             required: true,
         },
         description: {
@@ -17,24 +12,19 @@ const ReportsSchema = new Schema(
         },
         generatedDate: {
             type: Date,
-            required: true,
         },
         createdBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: DB_CONSTANTS.COLLECTIONS.USERS,
-            required: true,
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
+            required:true
         },
         updatedBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: DB_CONSTANTS.COLLECTIONS.USERS,
-            required: true,
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
+            required:true
         },
     },
     { timestamps: true }
 );
 
-export default mongoose.model(
-    'Reports',
-    ReportsSchema,
-    DB_CONSTANTS.COLLECTIONS.REPORTS
-);
+export default mongoose.model('Report', reportSchema);
