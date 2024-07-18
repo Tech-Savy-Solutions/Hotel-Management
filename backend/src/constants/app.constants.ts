@@ -17,6 +17,7 @@ export const END_POINTS = {
     RESERVATIONS: 'reservations',
     ROOMS: 'rooms',
     BILLINGS: 'billings',
+    POS: 'pos',
 };
 
 export const ROUTE_PATHS = {
