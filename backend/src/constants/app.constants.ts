@@ -18,6 +18,7 @@ export const END_POINTS = {
     ROOMS: 'rooms',
     BILLINGS: 'billings',
     POS: 'pos',
+    REPORTS: 'reports',
 };
 
 export const ROUTE_PATHS = {
