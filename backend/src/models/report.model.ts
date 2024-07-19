@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const ReportsSchema = new Schema(
     {
         reportName: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             ref: DB_CONSTANTS.COLLECTIONS.RESERVATIONS,
             required: true,
         },
