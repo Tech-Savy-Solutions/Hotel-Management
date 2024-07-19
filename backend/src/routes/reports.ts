@@ -15,32 +15,32 @@ import { ROUTE_PATHS } from '../constants/app.constants';
 
 const { TEST, GET_ALL, GET_BY_ID, ADD, UPDATE, DELETE } = ROUTE_PATHS;
 
-// @route   GET api/reservations/test
+// @route   GET api/reports/test
 // @desc    Tests Reservation route
 // @access  Public
 router.get(TEST, testRoute);
 
-// @route   GET api/reservations
-// @desc    Get all Reservations
+// @route   GET api/reports
+// @desc    Get all reports
 // @access  Public
 router.get(GET_ALL, getAllReports);
 
-// @route   GET api/reservations/:id
+// @route   GET api/reports/:id
 // @desc    Get single Reservation by id
 // @access  Public
 router.get(GET_BY_ID, getReportById);
 
-// @route   POST api/reservations
+// @route   POST api/reports
 // @desc    Add/save Reservation
 // @access  Public
 router.post(ADD, addReport);
 
-// @route   PUT api/reservations/:id
+// @route   PUT api/reports/:id
 // @desc    Update Reservation by id
 // @access  Public
 router.put(UPDATE, updateReport);
 
-// @route   DELETE api/reservations/:id
+// @route   DELETE api/reports/:id
 // @desc    Delete Reservation by id
 // @access  Public
 router.delete(DELETE, deleteReport);
