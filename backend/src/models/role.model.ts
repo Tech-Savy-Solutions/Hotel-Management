@@ -12,13 +12,11 @@ const RoleSchema = new Schema(
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
-            unique: true,
             ref: DB_CONSTANTS.COLLECTIONS.USERS,
         },
         updatedBy: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
-            unique: true,
             ref: DB_CONSTANTS.COLLECTIONS.USERS,
         },
     },
