@@ -6,19 +6,19 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
     {
-        Username: { type: String, required: true },
-        Password: { type: String, required: true },
-        Email: { type: String, required: true, unique: true },
-        PhoneNumber: { type: String, required: true, unique: true },
+        username: { type: String, required: true },
+        password: { type: String, required: true },
+        email: { type: String, required: true, unique: true },
+        phoneNumber: { type: String, required: true, unique: true },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
             required: true,
-            unique: true,
         },
         updatedBy: {
             type: mongoose.Schema.Types.ObjectId,
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
             required: true,
-            unique: true,
         },
     },
     { timestamps: true }

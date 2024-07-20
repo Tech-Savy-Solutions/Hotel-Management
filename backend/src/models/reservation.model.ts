@@ -49,6 +49,12 @@ const ReservationSchema = new Schema(
     { timestamps: true }
 );
 
+// Add a compound index to ensure a unique reservation for each room within a given time period
+ReservationSchema.index(
+    { roomID: 1, checkInDate: 1, checkOutDate: 1 },
+    { unique: true }
+);
+
 export default mongoose.model(
     'Reservation',
     ReservationSchema,
