@@ -13,13 +13,13 @@ const GuestSchema = new Schema(
         phoneNumber: { type: String, required: true, unique: true },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
             required: true,
-            unique: true,
         },
         updatedBy: {
             type: mongoose.Schema.Types.ObjectId,
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
             required: true,
-            unique: true,
         },
     },
     { timestamps: true }

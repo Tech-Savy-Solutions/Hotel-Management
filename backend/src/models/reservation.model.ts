@@ -33,7 +33,7 @@ const ReservationSchema = new Schema(
         status: {
             type: String,
             required: true,
-            enum: RESERVATION_STATUS,
+            enum: Object.values(RESERVATION_STATUS),
             default: DEFAULT_RESERVATION_STATUS,
         },
         createdBy: {
