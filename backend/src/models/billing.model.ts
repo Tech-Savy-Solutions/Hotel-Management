@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { DB_CONSTANTS } from '../constants/db.constants';
+import { PAYMENT_STATUS, PAYMENT_TYPE } from '../constants/app.constants';
 
 const Schema = mongoose.Schema;
 
@@ -22,6 +23,13 @@ const BillingSchema = new Schema(
         paymentStatus: {
             type: String,
             required: true,
+            enum: Object.values(PAYMENT_STATUS),
+            default: PAYMENT_STATUS.PENDING,
+        },
+        paymentType: {
+            type: String,
+            required: true,
+            enum: Object.values(PAYMENT_TYPE),
         },
         billingDate: {
             type: Date,
@@ -29,10 +37,12 @@ const BillingSchema = new Schema(
         },
         createdBy: {
             type: mongoose.Schema.Types.ObjectId,
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
             required: true,
         },
         updatedBy: {
             type: mongoose.Schema.Types.ObjectId,
+            ref: DB_CONSTANTS.COLLECTIONS.USERS,
             required: true,
         },
     },
