@@ -4,6 +4,8 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+const secretKey = process.env.JWT_SECRET as string;
+
 // @desc    Tests Users route
 // @route   GET api/Users/test
 // @access  Public
@@ -80,3 +82,25 @@ export const deleteUser = (req: any, res: any) => {
         .then((User) => res.json({ msg: 'User entry deleted successfully' }))
         .catch((err) => res.status(404).json({ error: 'No such a User' }));
 };
+
+export const login = async (req: Request, res: Response) => {
+    console.log("TsecretKeyn Express:", secretKey);
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+        console.log("User:", user);
+        if (!user) {
+            return res.status(401).json({ error: 'Authentication failed' });
+        }
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ error: 'Authentication failed' });
+        }
+        const token = jwt.sign({ userId: user._id }, secretKey, {
+            expiresIn: '1h',
+        });
+        res.status(200).json({ token, message: 'User logged In' });
+    } catch (error) {
+        res.status(500).json({ error: 'Login failed' });
+    }
+}
