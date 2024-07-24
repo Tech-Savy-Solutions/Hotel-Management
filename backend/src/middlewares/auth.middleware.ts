@@ -6,7 +6,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 
 declare module 'express-serve-static-core' {
     interface Request {
-        userId?: string;  // Optional since it won't be set before the middleware runs
+        userId?: string; // Optional since it won't be set before the middleware runs
     }
 }
 interface DecodedToken extends JwtPayload {
@@ -20,7 +20,6 @@ function isDecodedToken(decoded: any): decoded is DecodedToken {
 export function verifyToken(req: Request, res: Response, next: NextFunction) {
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
-
     if (!token) {
         return res.status(401).json({ error: 'Access denied' });
     }
@@ -29,8 +28,6 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
         const secretKey = process.env.JWT_SECRET as string;
 
         const decoded = jwt.verify(token, secretKey) as JwtPayload;
-
-
 
         // Check if the decoded object has a userId
         if (isDecodedToken(decoded)) {
@@ -44,4 +41,3 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
         res.status(401).json({ error: 'Invalid token' });
     }
 }
-

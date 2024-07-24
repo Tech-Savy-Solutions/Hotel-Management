@@ -53,7 +53,6 @@ export enum PAYMENT_TYPE {
     VOUCHER = 'Voucher',
 }
 
-
 export const BASE_PATH = '/api/v1';
 
 export const END_POINTS = {
@@ -74,5 +73,5 @@ export const ROUTE_PATHS = {
     ADD: '/',
     UPDATE: '/:id',
     DELETE: '/:id',
-    LOGIN: '/login'
+    LOGIN: '/login',
 };

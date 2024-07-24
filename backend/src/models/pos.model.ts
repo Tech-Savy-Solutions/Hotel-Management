@@ -42,8 +42,4 @@ const PosSchema = new Schema(
     { timestamps: true }
 );
 
-export default mongoose.model(
-    'POS',
-    PosSchema,
-    DB_CONSTANTS.COLLECTIONS.POS
-);
+export default mongoose.model('POS', PosSchema, DB_CONSTANTS.COLLECTIONS.POS);

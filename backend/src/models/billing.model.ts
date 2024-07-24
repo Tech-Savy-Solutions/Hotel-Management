@@ -49,4 +49,8 @@ const BillingSchema = new Schema(
     { timestamps: true }
 );
 
-export default mongoose.model('Billing', BillingSchema, DB_CONSTANTS.COLLECTIONS.BILLINGS);
+export default mongoose.model(
+    'Billing',
+    BillingSchema,
+    DB_CONSTANTS.COLLECTIONS.BILLINGS
+);
