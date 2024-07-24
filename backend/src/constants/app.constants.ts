@@ -28,4 +28,5 @@ export const ROUTE_PATHS = {
     ADD: '/',
     UPDATE: '/:id',
     DELETE: '/:id',
+    LOGIN: '/login'
 };

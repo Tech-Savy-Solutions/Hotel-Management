@@ -11,8 +11,8 @@
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
       "downlevelIteration": true,
-      "resolveJsonModule": true
+      "resolveJsonModule": true,
     },
-    "include": ["./**/*.ts"],
+    "include": ["./**/*.ts","src/**/*","types/**/*"],
     "exclude": ["node_modules", "dist"]
 }

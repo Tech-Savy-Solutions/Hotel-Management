@@ -20,6 +20,7 @@ const ReservationSchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: DB_CONSTANTS.COLLECTIONS.ROOMS,
             required: true,
+            unique: true
         },
         checkInDate: {
             type: Date,
@@ -47,12 +48,6 @@ const ReservationSchema = new Schema(
         },
     },
     { timestamps: true }
-);
-
-// Add a compound index to ensure a unique reservation for each room within a given time period
-ReservationSchema.index(
-    { roomID: 1, checkInDate: 1, checkOutDate: 1 },
-    { unique: true }
 );
 
 export default mongoose.model(
