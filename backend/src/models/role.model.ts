@@ -10,7 +10,9 @@ const Schema = mongoose.Schema;
 const RoleSchema = new Schema(
     {
         roleName: {
-            type: String, required: true, enum: Object.values(USER_ROLE),
+            type: String,
+            required: true,
+            enum: Object.values(USER_ROLE),
             unique: true,
         },
         createdBy: {

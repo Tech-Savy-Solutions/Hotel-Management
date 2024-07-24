@@ -9,7 +9,8 @@ const secretKey = process.env.JWT_SECRET as string;
 // @desc    Tests Users route
 // @route   GET api/Users/test
 // @access  Public
-export const testRoute = (req: any, res: any) => res.send('User route testing!');
+export const testRoute = (req: any, res: any) =>
+    res.send('User route testing!');
 
 // @desc    Get all Users
 // @route   GET api/Users
@@ -36,29 +37,28 @@ export const getUserById = (req: any, res: any) => {
 // @access  Public
 export const addUser = async (req: Request, res: Response) => {
     try {
-        console.log("Request Body:", req.body);
+        console.log('Request Body:', req.body);
 
         const { password, ...otherData } = req.body; // Extract password and other user data
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
-        console.log("Hashed Password:", hashedPassword);
+        console.log('Hashed Password:', hashedPassword);
 
         // Create a new user with the hashed password
         const newUser = new User({
             ...otherData,
-            password: hashedPassword // Use the hashed password
+            password: hashedPassword, // Use the hashed password
         });
-        console.log("newUser:", newUser);
+        console.log('newUser:', newUser);
 
         // Save the user to the database
         await newUser.save();
 
         // Respond with a success message
         res.status(201).json({ msg: 'User added successfully', user: newUser });
-
     } catch (err) {
-        console.error("Error adding user:", err);
+        console.error('Error adding user:', err);
         res.status(400).json({ error: 'Unable to add this User', err });
     }
 };
@@ -84,11 +84,11 @@ export const deleteUser = (req: any, res: any) => {
 };
 
 export const login = async (req: Request, res: Response) => {
-    console.log("TsecretKeyn Express:", secretKey);
+    console.log('TsecretKeyn Express:', secretKey);
     try {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
-        console.log("User:", user);
+        console.log('User:', user);
         if (!user) {
             return res.status(401).json({ error: 'Authentication failed' });
         }
@@ -103,4 +103,4 @@ export const login = async (req: Request, res: Response) => {
     } catch (error) {
         res.status(500).json({ error: 'Login failed' });
     }
-}
+};

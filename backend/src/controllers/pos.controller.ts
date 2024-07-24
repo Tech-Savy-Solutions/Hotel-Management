@@ -11,9 +11,7 @@ export const testRoute = (req: any, res: any) => res.send('Pos route testing!');
 export const getAllPos = (req: any, res: any) => {
     Pos.find()
         .then((Pos) => res.json(Pos))
-        .catch((err) =>
-            res.status(404).json({ noPosfound: 'No Pos found' })
-        );
+        .catch((err) => res.status(404).json({ noPosfound: 'No Pos found' }));
 };
 
 // @desc    Get single Pos by id
@@ -22,9 +20,7 @@ export const getAllPos = (req: any, res: any) => {
 export const getPosById = (req: any, res: any) => {
     Pos.findById(req.params.id)
         .then((Pos) => res.json(Pos))
-        .catch((err) =>
-            res.status(404).json({ noPosfound: 'No Pos found' })
-        );
+        .catch((err) => res.status(404).json({ noPosfound: 'No Pos found' }));
 };
 
 // @desc    Add/save Pos
@@ -57,5 +53,8 @@ export const updatePos = (req: any, res: any) => {
 export const deletePos = (req: any, res: any) => {
     Pos.findByIdAndDelete(req.params.id)
         .then((Pos) => res.json({ msg: 'Pos entry deleted successfully' }))
-        .catch((err) => { console.error(err); res.status(404).json({ error: 'No such a Pos' }) });
+        .catch((err) => {
+            console.error(err);
+            res.status(404).json({ error: 'No such a Pos' });
+        });
 };

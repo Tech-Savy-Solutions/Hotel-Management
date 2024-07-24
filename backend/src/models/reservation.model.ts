@@ -20,7 +20,7 @@ const ReservationSchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: DB_CONSTANTS.COLLECTIONS.ROOMS,
             required: true,
-            unique: true
+            unique: true,
         },
         checkInDate: {
             type: Date,

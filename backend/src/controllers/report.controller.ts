@@ -3,7 +3,8 @@ import Report from '../models/report.model';
 // @desc    Tests Report route
 // @route   GET api/Report/test
 // @access  Public
-export const testRoute = (req: any, res: any) => res.send('Report route testing!');
+export const testRoute = (req: any, res: any) =>
+    res.send('Report route testing!');
 
 // @desc    Get all Report
 // @route   GET api/Report
@@ -56,6 +57,11 @@ export const updateReport = (req: any, res: any) => {
 // @access  Public
 export const deleteReport = (req: any, res: any) => {
     Report.findByIdAndDelete(req.params.id)
-        .then((Report) => res.json({ msg: 'Report entry deleted successfully' }))
-        .catch((err) => { console.error(err); res.status(404).json({ error: 'No such a Report' }) });
+        .then((Report) =>
+            res.json({ msg: 'Report entry deleted successfully' })
+        )
+        .catch((err) => {
+            console.error(err);
+            res.status(404).json({ error: 'No such a Report' });
+        });
 };
