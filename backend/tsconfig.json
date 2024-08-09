@@ -13,6 +13,6 @@
         "downlevelIteration": true,
         "resolveJsonModule": true
     },
-    "include": ["./**/*.ts", "src/**/*", "types/**/*"],
+    "include": ["./**/*.ts", "src/**/*", "types/**/*", "../frontend/src/common/constants/colors.ts"],
     "exclude": ["node_modules", "dist"]
 }

@@ -85,6 +85,7 @@ export const deleteUser = (req: any, res: any) => {
 
 export const login = async (req: Request, res: Response) => {
     console.log('TsecretKeyn Express:', secretKey);
+    console.log('req.body:', req.body);
     try {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
@@ -93,13 +94,14 @@ export const login = async (req: Request, res: Response) => {
             return res.status(401).json({ error: 'Authentication failed' });
         }
         const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log('passwordMatch:', passwordMatch);
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Authentication failed' });
         }
         const token = jwt.sign({ userId: user._id }, secretKey, {
             expiresIn: '1h',
         });
-        res.status(200).json({ token, message: 'User logged In' });
+        res.status(200).json({ token, message: 'User logged In', id: user._id, username: user.username });
     } catch (error) {
         res.status(500).json({ error: 'Login failed' });
     }
