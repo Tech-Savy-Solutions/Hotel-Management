@@ -1,7 +1,31 @@
-// src/routes/index.tsx
+// src/routes.tsx
+import { RouteObject } from "react-router-dom";
+import {
+  ROUTE_HOME,
+  ROUTE_RESERVATIONS_NEW,
+  ROUTE_RESERVATIONS_CALENDAR,
+  ROUTE_RESERVATIONS_LIST,
+  ROUTE_GUESTS_LIST,
+  ROUTE_GUESTS_PROFILE,
+  ROUTE_ROOMS_LIST,
+  ROUTE_ROOMS_DETAILS,
+  ROUTE_ROOMS_HOUSEKEEPING,
+  ROUTE_BILLING_GENERATE,
+  ROUTE_BILLING_INVOICE,
+  ROUTE_POS,
+  ROUTE_REPORTS,
+  ROUTE_USERS_LIST,
+  ROUTE_USERS_PROFILE,
+  ROUTE_LOGIN,
+  ROUTE_REGISTER,
+  ROUTE_NOT_FOUND,
+  ROUTE_RESERVATIONS,
+  ROUTE_GUESTS,
+  ROUTE_ROOMS,
+  ROUTE_BILLING,
+  ROUTE_USERS,
+} from "src/common";
 
-import React from "react";
-import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Login from "src/components/Authentication/Login";
 import Register from "src/components/Authentication/SignUp";
 import Dashboard from "src/components/Dashboard/Dashboard";
@@ -19,72 +43,129 @@ import POS from "src/components/POS/POS";
 import AnalyticsDashboard from "src/components/Reports/Analytics";
 import UserList from "src/components/UserManagement/UserList";
 import UserProfile from "src/components/UserManagement/UserProfile";
+import { createBrowserRouter } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 
-// Define the routes with type safety
+// Define routes with custom properties
 const routes: RouteObject[] = [
   {
-    path: "/",
-    element: <Dashboard />, // The main dashboard
+    path: ROUTE_HOME,
+    element: (
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     children: [
-      // Nested routes for better organization
       {
-        path: "reservations",
+        path: ROUTE_RESERVATIONS,
+
         children: [
-          { path: "new", element: <ReservationForm /> },
-          { path: "calendar", element: <BookingCalendar /> },
-          { path: "list", element: <BookingList /> },
+          {
+            path: ROUTE_RESERVATIONS_NEW,
+            element: <ReservationForm />,
+          },
+          {
+            path: ROUTE_RESERVATIONS_CALENDAR,
+            element: <BookingCalendar />,
+          },
+          {
+            path: ROUTE_RESERVATIONS_LIST,
+            element: <BookingList />,
+          },
         ],
       },
       {
-        path: "guests",
+        path: ROUTE_GUESTS,
+
         children: [
-          { path: "list", element: <GuestList /> },
-          { path: ":guestId", element: <GuestProfile /> },
+          {
+            path: ROUTE_GUESTS_LIST,
+            element: <GuestList />,
+          },
+          {
+            path: ROUTE_GUESTS_PROFILE,
+            element: <GuestProfile />,
+          },
         ],
       },
       {
-        path: "rooms",
+        path: ROUTE_ROOMS,
+
         children: [
-          { path: "list", element: <RoomList /> },
-          { path: ":roomId", element: <RoomDetails /> },
-          { path: "housekeeping", element: <Housekeeping /> },
+          {
+            path: ROUTE_ROOMS_LIST,
+            element: <RoomList />,
+          },
+          {
+            path: ROUTE_ROOMS_DETAILS,
+            element: <RoomDetails />,
+          },
+          {
+            path: ROUTE_ROOMS_HOUSEKEEPING,
+            element: <Housekeeping />,
+          },
         ],
       },
       {
-        path: "billing",
+        path: ROUTE_BILLING,
+
         children: [
-          { path: "generate", element: <Billing /> },
-          { path: ":invoiceId", element: <Invoice /> },
+          {
+            path: ROUTE_BILLING_GENERATE,
+            element: <Billing />,
+          },
+          {
+            path: ROUTE_BILLING_INVOICE,
+            element: <Invoice />,
+          },
         ],
       },
       {
-        path: "pos",
-        element: <POS />,
+        path: ROUTE_POS,
+        element: (
+          <ProtectedRoute>
+            <POS />
+          </ProtectedRoute>
+        ),
       },
       {
-        path: "reports",
-        element: <AnalyticsDashboard />,
+        path: ROUTE_REPORTS,
+        element: (
+          <ProtectedRoute>
+            <AnalyticsDashboard />
+          </ProtectedRoute>
+        ),
       },
       {
-        path: "users",
+        path: ROUTE_USERS,
+
         children: [
-          { path: "list", element: <UserList /> },
-          { path: "profile", element: <UserProfile /> },
+          {
+            path: ROUTE_USERS_LIST,
+            element: <UserList />,
+          },
+          {
+            path: ROUTE_USERS_PROFILE,
+            element: <UserProfile />,
+          },
         ],
       },
     ],
   },
   {
-    path: "login",
+    path: ROUTE_LOGIN,
     element: <Login />,
   },
   {
-    path: "register",
+    path: ROUTE_REGISTER,
     element: <Register />,
+  },
+  {
+    path: ROUTE_NOT_FOUND,
+    element: <p>404 Error - Nothing here...</p>,
   },
 ];
 
-// Create and export the router
 const router = createBrowserRouter(routes);
 
 export default router;

@@ -5,6 +5,7 @@ import "src/index.scss";
 import { MantineProvider } from "@mantine/core";
 import customtheme from "./theme/customtheme.ts";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

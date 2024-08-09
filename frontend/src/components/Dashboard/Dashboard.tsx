@@ -1,33 +1,29 @@
-// src/components/Dashboard/Dashboard.tsx
-
 import React from "react";
-import { Outlet, Link } from "react-router-dom";
+import { AppShell, Burger, Button, Group } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
+import { COLOR_KEYS } from "src/common";
+import Header from "./Header";
 
-const Dashboard: React.FC = () => {
+interface DashboardProps {}
+
+const Dashboard: React.FC<DashboardProps> = ({}) => {
+  const [opened, { toggle }] = useDisclosure();
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="reservations/new">New Reservation</Link>
-          </li>
-          <li>
-            <Link to="reservations/calendar">Booking Calendar</Link>
-          </li>
-          <li>
-            <Link to="reservations/list">Booking List</Link>
-          </li>
-          <li>
-            <Link to="guests/list">Guest List</Link>
-          </li>
-          <li>
-            <Link to="rooms/list">Room List</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
-    </div>
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{ width: 250, breakpoint: "sm", collapsed: { mobile: !opened } }}
+      padding="md"
+      bg={COLOR_KEYS.BACKGROUND}
+    >
+      <Header opened={opened} toggle={toggle} />
+      <Navbar />
+      <AppShell.Main>
+        <Outlet />
+      </AppShell.Main>
+    </AppShell>
   );
 };
 
