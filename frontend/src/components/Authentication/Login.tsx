@@ -6,9 +6,7 @@ import {
   Loader,
   PasswordInput,
   Stack,
-  Text,
   TextInput,
-  Title,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import React, { useEffect } from "react";
@@ -20,6 +18,8 @@ import {
   PASSWORD,
   PASSWORD_PLACEHOLDER,
   ROUTE_HOME,
+  TEXT_SIZES,
+  TITLE_ORDERS,
   USERNAME,
   USERNAME_PLACEHOLDER,
   USER_ID_KEY,
@@ -29,6 +29,8 @@ import {
 } from "src/common";
 import useLoginMutation from "./api/useLoginMutation";
 import { LoginRequest } from "./types/auth";
+import TextAtom from "src/common/components/TextAtom";
+import TitleAtom from "src/common/components/TitleAtom";
 
 interface LoginProps {}
 
@@ -79,8 +81,8 @@ const Login: React.FC<LoginProps> = ({}) => {
           })}
         >
           <Stack justify="center" gap="xs" align="center">
-            <Title order={1}>{WELCOME}</Title>
-            <Text size="sm">{LOGIN_PAGE_GREETING}</Text>
+            <TitleAtom order={TITLE_ORDERS.page_title}>{WELCOME}</TitleAtom>
+            <TextAtom size={TEXT_SIZES.sm}>{LOGIN_PAGE_GREETING}</TextAtom>
           </Stack>
           <TextInput
             mt="md"
