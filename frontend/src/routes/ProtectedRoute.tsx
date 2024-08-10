@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { USER_ID_KEY, getStorageItem } from "src/common";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const isAuthenticated = localStorage.getItem("id");
-  console.log("isAuthenticated", isAuthenticated);
+  const isAuthenticated = getStorageItem(USER_ID_KEY);
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }

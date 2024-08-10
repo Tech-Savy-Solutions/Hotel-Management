@@ -1,35 +1,49 @@
-import axios from 'axios'; // Assuming you're using axios for making API requests
+import axios from 'axios';
+import { USER_TOKEN_KEY, getStorageItem } from '..';
 
 interface ApiCallerProps<TResponse = any> {
     url: string;
     type: 'GET' | 'POST' | 'PUT' | 'DELETE';
-    data?: object; // Make data optional for GET requests
+    data?: object;
+    params?: object; // Add optional params for GET requests
 }
 
-// Define the function with proper typing
-const apiCaller = async <TResponse>({ url, type, data }: ApiCallerProps<TResponse>): Promise<TResponse> => {
+const apiCaller = async <TResponse>({
+    url,
+    type,
+    data,
+    params,
+}: ApiCallerProps<TResponse>): Promise<TResponse> => {
     const endPoint = import.meta.env.VITE_API_BASE_URL + url;
+    const token = getStorageItem(USER_TOKEN_KEY);
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        params: params, // Add params to the config object
+    };
+
     let response;
 
-    // Select the method based on the `type` parameter
     switch (type) {
         case 'GET':
-            response = await axios.get(endPoint, { params: data });
+            response = await axios.get(endPoint, config);
             break;
         case 'POST':
-            response = await axios.post(endPoint, data);
+            response = await axios.post(endPoint, data, config);
             break;
         case 'PUT':
-            response = await axios.put(endPoint, data);
+            response = await axios.put(endPoint, data, config);
             break;
         case 'DELETE':
-            response = await axios.delete(endPoint, { data });
+            response = await axios.delete(endPoint, { ...config, data });
             break;
         default:
             throw new Error(`Unsupported request type: ${type}`);
     }
 
-    return response.data as TResponse; // Return the response data
+    return response.data as TResponse;
 };
 
 export default apiCaller;

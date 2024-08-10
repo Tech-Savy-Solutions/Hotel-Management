@@ -34,7 +34,6 @@ const useLoginMutation = (): UseMutationResult<UserResponse, Error, LoginRequest
                 message: `Welcome back, ${data.username}!`,
                 color: 'green',
             });
-            localStorage.setItem('user', data.id);
         },
         onError: (error: Error) => {
             showAlert({

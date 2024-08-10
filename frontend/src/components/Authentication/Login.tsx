@@ -13,7 +13,20 @@ import {
 import { useForm } from "@mantine/form";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ALPHANUMERIC_REGEX, ROUTE_HOME, USER } from "src/common";
+import {
+  ALPHANUMERIC_REGEX,
+  LOGIN_BUTTON_TEXT,
+  LOGIN_PAGE_GREETING,
+  PASSWORD,
+  PASSWORD_PLACEHOLDER,
+  ROUTE_HOME,
+  USERNAME,
+  USERNAME_PLACEHOLDER,
+  USER_ID_KEY,
+  USER_TOKEN_KEY,
+  WELCOME,
+  setStorageItem,
+} from "src/common";
 import useLoginMutation from "./api/useLoginMutation";
 import { LoginRequest } from "./types/auth";
 
@@ -52,9 +65,8 @@ const Login: React.FC<LoginProps> = ({}) => {
 
   useEffect(() => {
     if (data?.id) {
-      console.log("data", data);
-      localStorage.setItem("id", data?.id); // Store the user ID in local storage
-      localStorage.setItem("token", data?.token); // Store the user ID in local storage
+      setStorageItem(USER_ID_KEY, data?.id); // Store the user ID in local storage
+      setStorageItem(USER_TOKEN_KEY, data?.token); // Store the user ID in local storage
     }
   }, [data]);
   return (
@@ -67,29 +79,33 @@ const Login: React.FC<LoginProps> = ({}) => {
           })}
         >
           <Stack justify="center" gap="xs" align="center">
-            <Title order={1}>Welcome</Title>
-            <Text size="sm">We are glad to see you back with us</Text>
+            <Title order={1}>{WELCOME}</Title>
+            <Text size="sm">{LOGIN_PAGE_GREETING}</Text>
           </Stack>
           <TextInput
             mt="md"
             withAsterisk
-            label="Username"
-            placeholder="please enter your username"
+            label={USERNAME}
+            placeholder={USERNAME_PLACEHOLDER}
             key={form.key("username")}
             {...form.getInputProps("username")}
             inputSize="50"
           />
           <PasswordInput
             withAsterisk
-            label="Password"
+            label={PASSWORD}
             key={form.key("password")}
             {...form.getInputProps("password")}
-            placeholder="please enter your password"
+            placeholder={PASSWORD_PLACEHOLDER}
             inputSize="50"
           />
           <Group justify="flex-end" mt="md">
             <Button fullWidth type="submit">
-              {isPending ? <Loader color="white" size="sm" /> : "Login"}
+              {isPending ? (
+                <Loader color="white" size="sm" />
+              ) : (
+                LOGIN_BUTTON_TEXT
+              )}
             </Button>
           </Group>
         </form>
