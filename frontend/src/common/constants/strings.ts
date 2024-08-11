@@ -1,7 +1,15 @@
-export const WELCOME = 'Welcome'
-export const LOGIN_PAGE_GREETING = 'We are glad to see you back with us'
-export const USERNAME = 'Username'
-export const PASSWORD = 'Password'
-export const LOGIN_BUTTON_TEXT = 'Login'
-export const PASSWORD_PLACEHOLDER = 'please enter your password'
-export const USERNAME_PLACEHOLDER = 'please enter your username'
+export const STRINGS_CONSTANT = {
+    WELCOME: 'Welcome',
+    LOGIN_PAGE_GREETING: 'We are glad to see you back with us',
+    USERNAME: 'Username',
+    PASSWORD: 'Password',
+    LOGIN_BUTTON_TEXT: 'Login',
+    PASSWORD_PLACEHOLDER: 'please enter your password',
+    USERNAME_PLACEHOLDER: 'please enter your username',
+    NIMBLE_LOGDE: 'NimbleLodge',
+    GUESTS: 'Guests',
+    LISTS: 'Lists',
+    ARE: 'are',
+    STAYING: 'staying',
+    NOW: 'now',
+};

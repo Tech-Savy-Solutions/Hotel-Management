@@ -24,7 +24,7 @@ const Dashboard: React.FC<DashboardProps> = ({}) => {
     >
       <Header opened={opened} toggle={toggle} isLoading={isLoading} />
       <Navbar />
-      <AppShell.Main bg={COLOR_KEYS.SUNNY_YELLOW}>
+      <AppShell.Main>
         <Outlet />
       </AppShell.Main>
     </AppShell>

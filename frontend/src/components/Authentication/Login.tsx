@@ -13,18 +13,12 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ALPHANUMERIC_REGEX,
-  LOGIN_BUTTON_TEXT,
-  LOGIN_PAGE_GREETING,
-  PASSWORD,
-  PASSWORD_PLACEHOLDER,
   ROUTE_HOME,
+  STRINGS_CONSTANT,
   TEXT_SIZES,
   TITLE_ORDERS,
-  USERNAME,
-  USERNAME_PLACEHOLDER,
   USER_ID_KEY,
   USER_TOKEN_KEY,
-  WELCOME,
   setStorageItem,
 } from "src/common";
 import useLoginMutation from "./api/useLoginMutation";
@@ -81,24 +75,28 @@ const Login: React.FC<LoginProps> = ({}) => {
           })}
         >
           <Stack justify="center" gap="xs" align="center">
-            <TitleAtom order={TITLE_ORDERS.page_title}>{WELCOME}</TitleAtom>
-            <TextAtom size={TEXT_SIZES.sm}>{LOGIN_PAGE_GREETING}</TextAtom>
+            <TitleAtom order={TITLE_ORDERS.page_title}>
+              {STRINGS_CONSTANT.WELCOME}
+            </TitleAtom>
+            <TextAtom size={TEXT_SIZES.sm}>
+              {STRINGS_CONSTANT.LOGIN_PAGE_GREETING}
+            </TextAtom>
           </Stack>
           <TextInput
             mt="md"
             withAsterisk
-            label={USERNAME}
-            placeholder={USERNAME_PLACEHOLDER}
+            label={STRINGS_CONSTANT.USERNAME}
+            placeholder={STRINGS_CONSTANT.USERNAME_PLACEHOLDER}
             key={form.key("username")}
             {...form.getInputProps("username")}
             inputSize="50"
           />
           <PasswordInput
             withAsterisk
-            label={PASSWORD}
+            label={STRINGS_CONSTANT.PASSWORD}
             key={form.key("password")}
             {...form.getInputProps("password")}
-            placeholder={PASSWORD_PLACEHOLDER}
+            placeholder={STRINGS_CONSTANT.PASSWORD_PLACEHOLDER}
             inputSize="50"
           />
           <Group justify="flex-end" mt="md">
@@ -106,7 +104,7 @@ const Login: React.FC<LoginProps> = ({}) => {
               {isPending ? (
                 <Loader color="white" size="sm" />
               ) : (
-                LOGIN_BUTTON_TEXT
+                STRINGS_CONSTANT.LOGIN_BUTTON_TEXT
               )}
             </Button>
           </Group>

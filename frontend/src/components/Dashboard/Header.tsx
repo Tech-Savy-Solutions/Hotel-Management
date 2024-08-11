@@ -1,8 +1,9 @@
-import { AppShell, Burger, Flex, Group, Skeleton, Title } from "@mantine/core";
+import { AppShell, Burger, Flex, Group, Skeleton } from "@mantine/core";
 import React from "react";
-import { HEX_COLORS } from "src/common";
+import { HEX_COLORS, STRINGS_CONSTANT, TITLE_ORDERS } from "src/common";
 import { IconHome } from "@tabler/icons-react";
 import MenuDropdown from "./MenuDropdown";
+import TitleAtom from "src/common/components/TitleAtom";
 
 interface HeaderProps {
   opened: boolean;
@@ -22,7 +23,9 @@ const Header: React.FC<HeaderProps> = ({ opened, toggle, isLoading }) => {
       >
         <Group h="100%" px="md">
           <IconHome color={HEX_COLORS.sunnyYellow} stroke={1.5} />
-          <Title order={3}>NimbleLodge</Title>
+          <TitleAtom order={TITLE_ORDERS.subsection_title}>
+            {STRINGS_CONSTANT.NIMBLE_LOGDE}
+          </TitleAtom>
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         </Group>
         {isLoading ? (

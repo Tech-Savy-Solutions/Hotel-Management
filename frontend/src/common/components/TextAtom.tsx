@@ -12,9 +12,9 @@ type TextTransform = "none" | "capitalize" | "uppercase" | "lowercase";
 
 type TextAtomProps = {
   size?: string;
-  weight?: keyof typeof FONT_WEIGHTS;
+  weight?: number;
   style?: React.CSSProperties;
-  color?: keyof typeof TEXT_COLORS;
+  color?: string;
   align?: TextAlign; // Update this type
   transform?: TextTransform; // Update this type
   decoration?: keyof typeof TEXT_DECORATIONS;
@@ -37,13 +37,14 @@ const TextAtom: React.FC<TextAtomProps> = ({
   return (
     <Text
       size={size}
-      w={weight}
+      fw={weight}
       c={color}
       ta={align} // Update this line
       tt={transform} // Update this line
       td={decoration}
       style={{ fontStyle: italic ? "italic" : "normal", ...style }}
       {...props}
+      maw="fit-content"
     >
       {children}
     </Text>
