@@ -8,7 +8,8 @@ import {
   TEXT_SIZES,
   TITLE_ORDERS,
 } from "src/common";
-import AppShellContainer from "src/common/components/AppShellConatiner";
+import AppShellContainer from "src/common/components/AppShellContainer";
+import CustomTable from "src/common/components/CustomTable";
 import TextAtom from "src/common/components/TextAtom";
 import TitleAtom from "src/common/components/TitleAtom";
 
@@ -46,6 +47,7 @@ const GuestsList: React.FC<GuestsListProps> = ({}) => {
           </Flex>
         </Stack>
       </Flex>
+      <CustomTable />
     </AppShellContainer>
   );
 };

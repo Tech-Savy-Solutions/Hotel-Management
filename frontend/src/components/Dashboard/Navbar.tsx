@@ -2,7 +2,7 @@ import React from "react";
 import { AppShell, NavLink } from "@mantine/core";
 import { useLocation } from "react-router-dom";
 import router from "src/routes";
-import NavbarRoutes from "src/routes/navbarRoutes";
+import NavbarRoutes from "src/routes/NavbarRoutes";
 // import NavbarRoutes from "src/routes/navbarRoutes";
 // import DashboardRoutes from "src/routes/NavbarRoutes";
 

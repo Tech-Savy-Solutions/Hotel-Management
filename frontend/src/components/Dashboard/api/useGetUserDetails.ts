@@ -15,7 +15,7 @@ const fetchUserDetails = async (
 ): Promise<UserDetailsResponse> => {
   try {
     const response = await apiCaller<UserDetailsResponse>({
-      url: USER + "/" + credentials?.id,
+      url: USER + credentials?.id,
       type: API_TYPE.GET,
     });
 
@@ -25,6 +25,7 @@ const fetchUserDetails = async (
     }
     return result.data;
   } catch (error) {
+    console.log("error", error);
     showAlert({
       title: "Error",
       message: `Failed to fetch user details!`,
