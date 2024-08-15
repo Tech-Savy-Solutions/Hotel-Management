@@ -28,7 +28,10 @@
       "components/*":["./src/components/*"],
       "assets": ["./src/assets/*"],
       "lib": ["./src/lib/*"],
-    }
+      "@test-utils": ["./test-utils"]
+    },
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    
   },
-  "include": ["src"]
+  "include": ["src","test-utils", "test-utils"]
 }

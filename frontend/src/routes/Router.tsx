@@ -1,5 +1,5 @@
 // src/routes.tsx
-import { RouteObject } from "react-router-dom";
+import { RouteObject, RouterProvider } from "react-router-dom";
 import {
   ROUTE_HOME,
   ROUTE_RESERVATIONS_NEW,
@@ -168,4 +168,6 @@ const routes: RouteObject[] = [
 
 const router = createBrowserRouter(routes);
 
-export default router;
+export default function Router() {
+  return <RouterProvider router={router} />;
+}
