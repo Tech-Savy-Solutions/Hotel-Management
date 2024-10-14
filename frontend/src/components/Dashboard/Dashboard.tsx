@@ -3,10 +3,11 @@ import { AppShell, Burger, Button, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import { COLOR_KEYS, getStorageItem } from "src/common";
+// import { COLOR_KEYS, getStorageItem } from "src/common";
 import Header from "./Header";
 import { useGetUserDetails } from "./api/useGetUserDetails";
 import { userDetailRequest } from "./types/dashboard";
+import { COLOR_KEYS, getStorageItem } from "../../common";
 
 interface DashboardProps {}
 

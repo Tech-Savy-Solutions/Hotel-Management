@@ -21,3 +21,17 @@ export const userDetailsSchema = z.object({
     updatedAt: z.string(), // Consider using z.date() if working with Date objects
     __v: z.number(),
 });
+
+export const GuestsListResponseSchema = z.array(
+    z.object({
+        _id: z.string(),
+        firstName: z.string(),
+        lastName: z.string(),
+        address: z.string(),
+        email: z.string().email(), // Ensure it's a valid email format
+        phoneNumber: z.string(), // You could add a more specific regex for phone validation if needed
+        createdAt: z.string().datetime(), // Ensures it's a valid ISO date string
+        updatedAt: z.string().datetime(), // Ensures it's a valid ISO date string
+        __v: z.number(),
+    })
+) 

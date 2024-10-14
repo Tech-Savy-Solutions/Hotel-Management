@@ -12,4 +12,5 @@ export const STRINGS_CONSTANT = {
     ARE: 'are',
     STAYING: 'staying',
     NOW: 'now',
+    ADD_GUEST: 'Add Guest'
 };

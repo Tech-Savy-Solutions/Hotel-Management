@@ -36,6 +36,7 @@ const useLoginMutation = (): UseMutationResult<UserResponse, Error, LoginRequest
             });
         },
         onError: (error: Error) => {
+            console.log("error", error)
             showAlert({
                 title: 'Error',
                 message: error.message || 'Login failed.',

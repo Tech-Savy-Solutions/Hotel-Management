@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { AppShell, NavLink } from "@mantine/core";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink as RouterNavLink } from "react-router-dom";
 import router from "src/routes";
 import NavbarRoutes from "src/routes/NavbarRoutes";
 // import NavbarRoutes from "src/routes/navbarRoutes";
@@ -10,16 +10,17 @@ interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = () => {
   const location = useLocation();
-
+  const memoizedRoutes = useMemo(() => NavbarRoutes, []);
   console.log("router", router);
   return (
     <AppShell.Navbar p="md">
-      {NavbarRoutes?.map(
+      {memoizedRoutes?.map(
         (route, index) =>
           route.path && (
             <NavLink
               key={index}
-              href={route.path}
+              component={RouterNavLink} // Use RouterNavLink for client-side routing
+              to={route.path}
               label={route.label}
               leftSection={route.icon}
               childrenOffset={38}
@@ -31,7 +32,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                   child?.path && (
                     <NavLink
                       key={childIndex}
-                      href={child.path}
+                      component={RouterNavLink} // React Router's NavLink for child routes
+                      to={child.path}
                       label={child.label}
                       active={location.pathname === child.path}
                     />

@@ -23,7 +23,7 @@ export const TEXT_ALIGNMENTS = {
     left: 'left',
     center: 'center',
     right: 'right',
-};
+} as const;
 
 export const TEXT_TRANSFORMS = {
     uppercase: 'uppercase',
@@ -45,3 +45,13 @@ export const TITLE_ORDERS = {
     caption_title: 5,
     minor_title: 6,
 };
+
+
+export const FLEX_ALIGNMENT = {
+    CENTER: 'center',
+    START: 'flex-start',
+    END: 'flex-end',
+    SPACE_BETWEEN: 'space-between',
+    SPACE_AROUND: 'space-around',
+    SPACE_EVENLY: 'space-evenly',
+}

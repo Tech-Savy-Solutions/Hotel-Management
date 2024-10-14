@@ -1,11 +1,6 @@
 import React from "react";
 import { Text, TextProps } from "@mantine/core";
-import {
-  TEXT_SIZES,
-  FONT_WEIGHTS,
-  TEXT_COLORS,
-  TEXT_DECORATIONS,
-} from "src/common";
+import { TEXT_SIZES, TEXT_DECORATIONS } from "src/common";
 
 type TextAlign = "left" | "center" | "right" | "justify";
 type TextTransform = "none" | "capitalize" | "uppercase" | "lowercase";

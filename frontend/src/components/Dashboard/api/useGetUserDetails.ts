@@ -15,7 +15,7 @@ const fetchUserDetails = async (
 ): Promise<UserDetailsResponse> => {
   try {
     const response = await apiCaller<UserDetailsResponse>({
-      url: USER + credentials?.id,
+      url: USER + '/' + credentials?.id,
       type: API_TYPE.GET,
     });
 

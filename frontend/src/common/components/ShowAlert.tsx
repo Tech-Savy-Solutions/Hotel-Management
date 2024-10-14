@@ -10,6 +10,7 @@ interface AlertOptions {
 
 // Centralized function for showing alerts
 export const showAlert = ({ title, message, color = "blue" }: AlertOptions) => {
+  console.log("showAlert", title, message, color);
   notifications.show({
     title: title,
     message: message,

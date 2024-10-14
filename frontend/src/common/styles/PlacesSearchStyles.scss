@@ -1,0 +1,48 @@
+@import "@mantine/core/styles.css";
+
+.placessearch__container {
+  width: 100%;
+  margin-top: var(--mantine-spacing-sm);
+}
+
+.placessearch__input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px; /* Increased right padding for the loader */
+  border: 1px solid rgb(198, 200, 203); /* Default border color */
+  background: transparent;
+  font-size: 14px;
+  position: relative; /* Position relative for absolute child */
+  transition: border-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.loading__spinner {
+  position: absolute;
+  right: 10px; /* Position the loader inside the input */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  pointer-events: none; /* Prevent interaction with the loader */
+}
+
+.placessearch__input:hover {
+  border-color: var(
+    --mantine-color-primary
+  ); /* Change to primary color on hover */
+}
+
+.optionslist__container {
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.optionslist__container li {
+  list-style: none;
+  margin: 5px 0px;
+}
+.clear-button {
+  position: absolute;
+  right: 10px; /* Adjust as needed to align with input padding */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+}
